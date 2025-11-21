@@ -1,5 +1,5 @@
 {
-  "name": "SmartDo - AI Enhanced Todo List",
-  "description": "A modern, aesthetic todo list application supporting images and AI-powered task breakdown using Gemini.",
+  "name": "SmartDo - AI 智能待办清单",
+  "description": "一个现代化的待办事项应用，支持图片附件，并利用 Gemini AI 自动拆解任务步骤。",
   "requestFramePermissions": []
 }

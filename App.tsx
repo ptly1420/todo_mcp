@@ -96,6 +96,13 @@ function App() {
 
   const activeCount = todos.filter(t => !t.completed).length;
 
+  // Map filter types to Chinese labels
+  const filterLabels: Record<FilterType, string> = {
+    [FilterType.ALL]: '全部',
+    [FilterType.ACTIVE]: '进行中',
+    [FilterType.COMPLETED]: '已完成'
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pb-20">
       {/* Header */}
@@ -108,11 +115,11 @@ function App() {
                 </svg>
              </div>
              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">
-                SmartDo
+                SmartDo 智能待办
              </h1>
           </div>
           <div className="text-sm text-gray-500 font-medium">
-             {activeCount} pending
+             {activeCount} 个待办
           </div>
         </div>
       </header>
@@ -127,7 +134,7 @@ function App() {
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="What needs to be done?"
+                    placeholder="准备做点什么？"
                     className="w-full pl-4 pr-12 py-3 rounded-xl border border-gray-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none text-lg"
                 />
                  {/* File Upload Trigger */}
@@ -135,7 +142,7 @@ function App() {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className={`absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg hover:bg-gray-100 transition-colors ${selectedImage ? 'text-indigo-600' : 'text-gray-400'}`}
-                    title="Attach Image"
+                    title="上传图片"
                 >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -160,15 +167,22 @@ function App() {
                             if(fileInputRef.current) fileInputRef.current.value = '';
                         }}
                         className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-0.5 shadow-sm hover:bg-red-600 transition-colors"
+                        title="移除图片"
                     >
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
             )}
 
-            <div className="flex justify-end">
-                <Button type="submit" disabled={!inputValue.trim()}>
-                    Add Task
+            <div className="flex justify-between items-center">
+                 {/* Helpful Tip */}
+                 <div className="hidden sm:flex text-xs text-gray-400 items-center gap-1.5">
+                    <span className="bg-indigo-50 text-indigo-600 p-1 rounded">💡 提示</span>
+                    <span>添加任务后，点击任务旁的 <span className="font-bold">✨</span> 可自动拆解步骤。</span>
+                </div>
+
+                <Button type="submit" disabled={!inputValue.trim()} className="ml-auto">
+                    添加任务
                 </Button>
             </div>
           </form>
@@ -186,7 +200,7 @@ function App() {
                   : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
               }`}
             >
-              {t.charAt(0) + t.slice(1).toLowerCase()}
+              {filterLabels[t]}
             </button>
           ))}
         </div>
@@ -200,8 +214,8 @@ function App() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                 </div>
-                <p className="text-gray-500 font-medium">No tasks found</p>
-                <p className="text-gray-400 text-sm mt-1">Add a new task to get started</p>
+                <p className="text-gray-500 font-medium">暂无任务</p>
+                <p className="text-gray-400 text-sm mt-1">添加一个新的任务开始高效的一天吧！</p>
             </div>
           ) : (
             filteredTodos.map(todo => (

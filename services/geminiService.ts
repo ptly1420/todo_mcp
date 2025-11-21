@@ -13,7 +13,8 @@ export const suggestSubtasks = async (taskText: string): Promise<string[]> => {
 
   try {
     const model = "gemini-2.5-flash";
-    const prompt = `Break down the following task into 3 to 5 actionable, concise subtasks: "${taskText}". Return only the list of subtask strings.`;
+    // Updated prompt to request Chinese output specifically
+    const prompt = `请将以下任务拆分为 3 到 5 个可执行的、简洁的子任务："${taskText}"。请仅返回子任务字符串列表（请确保使用中文回答）。`;
 
     const response = await ai.models.generateContent({
       model,

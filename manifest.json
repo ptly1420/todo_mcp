@@ -1,7 +1,7 @@
 {
-  "name": "SmartDo AI Todo",
+  "name": "SmartDo 智能待办",
   "short_name": "SmartDo",
-  "description": "AI powered todo list manager",
+  "description": "AI 驱动的智能待办清单",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f1f5f9",

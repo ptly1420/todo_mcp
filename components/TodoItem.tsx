@@ -57,7 +57,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
               <button 
                 onClick={handleGenerate} 
                 className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg" 
-                title="Auto-generate subtasks with AI"
+                title="使用 AI 自动生成子任务"
                 disabled={isGenerating || todo.completed}
               >
                 {isGenerating ? (
@@ -74,7 +74,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
               <button 
                 onClick={() => onDelete(todo.id)} 
                 className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg"
-                title="Delete"
+                title="删除任务"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -85,13 +85,13 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 
           {todo.imageUrl && (
             <div className="mt-3 relative group rounded-lg overflow-hidden max-w-xs border border-gray-200">
-                <img src={todo.imageUrl} alt="Todo attachment" className="w-full h-auto object-cover max-h-48" />
+                <img src={todo.imageUrl} alt="任务附件" className="w-full h-auto object-cover max-h-48" />
             </div>
           )}
 
           {(todo.subtasks.length > 0) && (
             <div className={`mt-3 space-y-2 pl-1 transition-all duration-300 ${isExpanded ? 'block' : 'hidden'}`}>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Subtasks</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">子任务</p>
               {todo.subtasks.map(sub => (
                 <div key={sub.id} className="flex items-center gap-2 text-sm">
                    <button 
@@ -112,7 +112,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
                     onClick={() => setIsExpanded(true)}
                     className="mt-2 text-xs text-indigo-500 font-medium hover:text-indigo-600 flex items-center gap-1"
                 >
-                   View {todo.subtasks.length} subtasks
+                   查看 {todo.subtasks.length} 个子任务
                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
            )}

@@ -1,0 +1,21 @@
+{
+  "name": "SmartDo AI Todo",
+  "short_name": "SmartDo",
+  "description": "AI powered todo list manager",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "https://via.placeholder.com/192x192.png?text=SD",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://via.placeholder.com/512x512.png?text=SD",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

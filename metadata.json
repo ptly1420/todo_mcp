@@ -1,0 +1,5 @@
+{
+  "name": "SmartDo - AI Enhanced Todo List",
+  "description": "A modern, aesthetic todo list application supporting images and AI-powered task breakdown using Gemini.",
+  "requestFramePermissions": []
+}

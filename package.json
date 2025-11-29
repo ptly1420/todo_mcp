@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "SmartDo 智能待办 - AI驱动的待办事项管理应用",
-  "main": "electron/main.js",
+  "main": "electron/main.cjs",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -28,17 +28,12 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: 'todo-list-app/package-lock.json'
 
       - name: Install dependencies
-        run: |
-          cd todo-list-app
-          npm ci
+        run: npm ci
 
       - name: Build application
-        run: |
-          cd todo-list-app
-          npm run electron:build
+        run: npm run electron:build
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -48,8 +43,8 @@ jobs:
         with:
           name: windows-build
           path: |
-            todo-list-app/dist-electron/*.exe
-            todo-list-app/dist-electron/*.exe.blockmap
+            dist-electron/*.exe
+            dist-electron/*.exe.blockmap
 
       - name: Upload macOS artifacts
         if: matrix.os == 'macos-latest'
@@ -57,8 +52,8 @@ jobs:
         with:
           name: macos-build
           path: |
-            todo-list-app/dist-electron/*.dmg
-            todo-list-app/dist-electron/*.dmg.blockmap
+            dist-electron/*.dmg
+            dist-electron/*.dmg.blockmap
 
       - name: Upload Linux artifacts
         if: matrix.os == 'ubuntu-latest'
@@ -66,7 +61,7 @@ jobs:
         with:
           name: linux-build
           path: |
-            todo-list-app/dist-electron/*.AppImage
+            dist-electron/*.AppImage
 
   release:
     needs: build
